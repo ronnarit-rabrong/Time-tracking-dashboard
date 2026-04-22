@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', async function(){
 	const timeTracking = new TimeTracking([...displayTime]);
 	const defaultTimeTracking = 'weekly';
 
-	timeTracking.data = await fetchData("/data.json");
+	timeTracking.data = await fetchData("data.json");
 	timeTracking.select(defaultTimeTracking);
 	btnController.forEach((btn) => {
 		btn.id === defaultTimeTracking
