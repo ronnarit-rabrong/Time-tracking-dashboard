@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+	<title>Frontend Mentor | Time tracking dashboard</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+	<main class="main-site">
+		<div class="time-wrapper">
+			
+			<!--	controller		-->
+			<section class="time-controller">
+				
+				<!-- profile			 -->
+				<div class="time-profile">
+					<img class="time-profile__img" src="./assets/images/image-jeremy.png" alt="Report for Jeremy Robson">
+					<p class="time-profile__info">Report for</p>
+					<h1 class="time-profile__name">Jeremy Robson</h1>
+				</div>
+				
+				<!--	button			-->
+				<button class="time-controller__btn" type="button" data-controller-btn id="daily">Daily</button>
+				<button class="time-controller__btn" type="button" data-controller-btn id="weekly">Weekly</button>
+				<button class="time-controller__btn" type="button" data-controller-btn id="monthly">Monthly</button>
+			</section>
+			
+			<!-- time-display -->
+			<!--	work		   -->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-work.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Work</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+			
+			<!-- play			-->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-play.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Play</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+			
+			<!-- Study       -->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-study.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Study</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+			
+			<!-- Exercise       -->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-exercise.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Exercise</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+			
+			<!-- Social       -->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-social.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Social</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+			
+			<!-- Exercise       -->
+			<article class="time-display" data-display-time>
+				<img class="time-display__img" src="./assets/images/icon-self-care.svg" alt="">
+				<div class="time-display__details">
+					<h2 class="time-display__title">Exercise</h2>
+					<img class="time-display__share-icon" src="./assets/images/icon-ellipsis.svg" alt="">
+					<p class="time-display__current" data-display-time-current>--</p>
+					<p class="time-display__previous" data-display-time-previous>Last Week --</p>
+				</div>
+			</article>
+		</div>
+	</main>
+	<script src="./script.js"></script>
+</body>
+</html>
