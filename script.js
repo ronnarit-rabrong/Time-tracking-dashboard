@@ -1,10 +1,11 @@
 class TimeTracking{
 	constructor(timeDisplayEl){
-		if(!timeDisplayEl){
+		const parentElement = Array.from(timeDisplayEl || [])
+		if(parentElement.length === 0){
 			throw new Error("timeTracking component requires an element with attribute 'data-display-time'.");
 		}
 
-		const getRequired = (parent, selector) => {
+		const getChildEl = (parent, selector) => {
 			return parent.map((p, i) => {
 				const el = p.querySelector(selector);
 				if (!el) {
@@ -16,9 +17,9 @@ class TimeTracking{
 		}
 
 		this.data = null;
-		this.timeDisplayEl = timeDisplayEl;
-		this.timeCurrentEl = getRequired(this.timeDisplayEl, '[data-display-time-current]');
-		this.timePreviousEl = getRequired(this.timeDisplayEl, '[data-display-time-previous]');
+		this.timeDisplayEl = parentElement;
+		this.timeCurrentEl = getChildEl(this.timeDisplayEl, '[data-display-time-current]');
+		this.timePreviousEl = getChildEl(this.timeDisplayEl, '[data-display-time-previous]');
 	}
 
 	#updateTime(data, index, keyItem, lastDate){
