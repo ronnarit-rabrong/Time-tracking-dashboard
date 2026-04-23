@@ -55,9 +55,9 @@ function getSelectorAll(selector){
 
 function getChildSelector(parent, selector){
 	return parent.map((p, i) => {
-		const el = p.querySelector(selector);
-		if (!el) throw new Error(`Missing element "${selector}" inside parent at index ${i}.`);
-		return el;
+		const element = p.querySelector(selector);
+		if (!element) throw new Error(`Missing element "${selector}" inside parent at index ${i}.`);
+		return element;
 	});
 }
 
