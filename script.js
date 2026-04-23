@@ -5,11 +5,14 @@ class TimeTracking{
 		}
 
 		const getRequired = (parent, selector) => {
-			const childrenEl = parent.map(el => el.querySelector(selector));
-			if(!childrenEl){
-				throw new Error(`timeCurrentEl required element inside with attribute '${selector}'.`);
-			}
-			return childrenEl;
+			return parent.map((p, i) => {
+				const el = p.querySelector(selector);
+				if (!el) {
+					throw new Error(`Missing element "${selector}" inside parent at index ${i}.`);
+				}
+
+				return el;
+			});
 		}
 
 		this.data = null;
@@ -35,12 +38,16 @@ class TimeTracking{
 async function fetchData(url){
 	try {
 		const response = await fetch(url);
-		if(response.status === 200){
+		if(response.ok){
 			const data = await response.json();
-			return [...data];
+			return Array.isArray(data) ? [...data] : [];
 		}
-	}catch (error) {
+
+		console.warn(`fetch failed: ${response.status} ${response.statusText}`);
+		return [];
+	}catch(error) {
 		console.error(error);
+		return [];
 	}
 }
 
