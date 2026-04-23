@@ -47,10 +47,9 @@ async function fetchData(url){
 }
 
 function getSelectorAll(selector){
-	const elements = [...document.querySelectorAll(selector)];
-	const element = Array.from(elements || []);
-	if(element.length === 0) throw new Error(`timeTracking component requires an element with attribute '${selector}'.`);
-	return element;
+	const elements = Array.from(document.querySelectorAll(selector));
+	if(elements.length === 0) throw new Error(`timeTracking component requires an element with attribute '${selector}'.`);
+	return elements;
 }
 
 function getChildSelector(parent, selector){
