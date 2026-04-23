@@ -23,8 +23,17 @@ class TimeTracking{
 	}
 
 	#updateTime(data, index, keyItem, lastDate){
-		this.timeCurrentEl[index].textContent = data[index]["timeframes"][keyItem]["current"] + "hrs";
-		this.timePreviousEl[index].textContent = lastDate + " - " + " " + data[index]["timeframes"][keyItem]["previous"] + "hrs";
+		const currentTimeEl = this.timeCurrentEl[index];
+		const previousTimeEl = this.timePreviousEl[index];
+		const timeframe = data[index]["timeframes"][keyItem];
+
+		if(timeframe && currentTimeEl){
+			currentTimeEl.textContent = `${timeframe["current"]}hrs`
+		}
+
+		if(timeframe && previousTimeEl){
+			previousTimeEl.textContent = `${lastDate} - ${timeframe["previous"]}hrs`
+		}
 	}
 
 	select(keyItem){
