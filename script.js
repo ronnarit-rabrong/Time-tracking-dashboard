@@ -1,25 +1,8 @@
 class TimeTracking{
-	constructor(timeDisplayEl){
-		const parentElement = Array.from(timeDisplayEl || [])
-		if(parentElement.length === 0){
-			throw new Error("timeTracking component requires an element with attribute 'data-display-time'.");
-		}
-
-		const getChildEl = (parent, selector) => {
-			return parent.map((p, i) => {
-				const el = p.querySelector(selector);
-				if (!el) {
-					throw new Error(`Missing element "${selector}" inside parent at index ${i}.`);
-				}
-
-				return el;
-			});
-		}
-
+	constructor({currentEl, previousEl}) {
 		this.data = null;
-		this.timeDisplayEl = parentElement;
-		this.timeCurrentEl = getChildEl(this.timeDisplayEl, '[data-display-time-current]');
-		this.timePreviousEl = getChildEl(this.timeDisplayEl, '[data-display-time-previous]');
+		this.timeCurrentEl = currentEl;
+		this.timePreviousEl = previousEl;
 	}
 
 	#updateTime(data, index, keyItem, lastDate){
@@ -63,11 +46,29 @@ async function fetchData(url){
 	}
 }
 
+function getSelectorAll(selector){
+	const elements = [...document.querySelectorAll(selector)];
+	const element = Array.from(elements || []);
+	if(element.length === 0) throw new Error(`timeTracking component requires an element with attribute '${selector}'.`);
+	return element;
+}
+
+function getChildSelector(parent, selector){
+	return parent.map((p, i) => {
+		const el = p.querySelector(selector);
+		if (!el) throw new Error(`Missing element "${selector}" inside parent at index ${i}.`);
+		return el;
+	});
+}
+
 document.addEventListener('DOMContentLoaded', async function(){
-	const btnController = document.querySelectorAll('[data-controller-btn]');
-	const displayTime = document.querySelectorAll('[data-display-time]');
-	const timeTracking = new TimeTracking([...displayTime]);
 	const defaultTimeTracking = 'weekly';
+	const btnController = getSelectorAll('[data-controller-btn]');
+	const displayParentEL = getSelectorAll('[data-display-time]');
+	const timeTracking = new TimeTracking({
+		currentEl: getChildSelector(displayParentEL, '[data-display-time-current]'),
+		previousEl: getChildSelector(displayParentEL, '[data-display-time-previous]'),
+	});
 
 	timeTracking.data = await fetchData("data.json");
 	timeTracking.select(defaultTimeTracking);
