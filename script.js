@@ -27,10 +27,12 @@ class TimeTracking{
 	}
 
 	select(keyItem){
-		for(let i = 0; i < this.data.length; i++){
-			if(keyItem === "daily") this.#updateTime(this.data, i, keyItem, "Last Day");
-			if(keyItem === "weekly") this.#updateTime(this.data, i, keyItem, "Last Week");
-			if(keyItem === "monthly") this.#updateTime(this.data, i, keyItem, "Last Month");
+		if(Array.isArray(this.data) && this.data.length > 0){
+			for(let i = 0; i < this.data.length; i++){
+				if(keyItem === "daily") this.#updateTime(this.data, i, keyItem, "Last Day");
+				if(keyItem === "weekly") this.#updateTime(this.data, i, keyItem, "Last Week");
+				if(keyItem === "monthly") this.#updateTime(this.data, i, keyItem, "Last Month");
+			}
 		}
 	}
 }
